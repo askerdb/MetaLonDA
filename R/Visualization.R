@@ -41,7 +41,7 @@ visualizeFeature = function (df, text, group.levels, unit = "days")
           plot.title = element_text(hjust = 0.5)) +
     theme(legend.position="top") + scale_x_continuous(breaks = waiver())
 
-  ggsave(filename=paste("Feature_", text, ".jpg", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
+  ggsave(filename=paste("Feature_", text, ".pdf", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
 }
 
 
@@ -92,7 +92,7 @@ visualizeFeatureSpline = function (df, model, method, text, group.levels, unit =
           plot.title = element_text(hjust = 0.5)) +
     theme(legend.position="top") + scale_x_continuous(breaks = waiver()) + guides(linetype=FALSE, size =FALSE)
   
-  ggsave(filename=paste("Feature_", text, "_CurveFitting_", method, ".jpg", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
+  ggsave(filename=paste("Feature_", text, "_CurveFitting_", method, ".pdf", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
 }
 
 
@@ -114,7 +114,7 @@ visualizeARHistogram = function(permuted, text, method){
   n = ncol(permuted)
   r = ceiling(sqrt(n))
   c = ceiling(sqrt(n))
-	jpeg(paste("Feature_", text, "_AR_distribution_", method, ".jpg", sep = ""), res = 1200, height = r*5, width = c*5, units = 'cm')
+	pdf(paste("Feature_", text, "_AR_distribution_", method, ".pdf", sep = ""), res = 1200, height = r*5, width = c*5, units = 'cm')
   par(mfrow=c(r,c))
   
   for( i in 1:ncol(permuted)){
@@ -188,7 +188,7 @@ visualizeArea = function(aggregate.df, model.ss, method, start, end, text, group
   p2 = xx  
   p3 = paste(p1, p2, sep="+")
   p = eval(parse(text = p3))
-  ggsave(filename=paste("Feature_", text, "_SignificantInterval_", method, ".jpg", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
+  ggsave(filename=paste("Feature_", text, "_SignificantInterval_", method, ".pdf", sep=""), dpi = 1200, height = 10, width = 15, units = 'cm')
 }
 
 
@@ -227,5 +227,5 @@ visualizeTimeIntervals = function(interval.details, prefix = "MetaLonDA_timeline
           panel.grid.major.y = element_line(colour = "white", size = 6),
           panel.grid.major.x = element_line(colour = "white",size = 0.75)) +
     theme(legend.position="top", panel.border = element_rect(colour = "black", fill = NA, size = 2))
-  ggsave(filename = paste(prefix, "_MetaLonDA_TimeIntervals.jpg", sep=""), dpi = 1200, height = 30, width = 20, units = 'cm')
+  ggsave(filename = paste(prefix, "_MetaLonDA_TimeIntervals.pdf", sep=""), dpi = 1200, height = 30, width = 20, units = 'cm')
 }
